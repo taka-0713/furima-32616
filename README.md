@@ -17,40 +17,37 @@
 
 - has_many :items
 - has_many :comments
-- 
+- has_many :users_items
 
 ## itemsテーブル
 
-|column       |Type      |options    |
-|-------------|----------|-----------|
-|user         |references|           |
-|image        |          |           |
-|item_name    |string    |null: false|
-|item_describe|text      |null: false|
-|category     |integer   |null: false|
-|item_status  |integer   |null: false|
-|shipping_cost|integer   |null: false|
-|shipping_area|integer   |null: false|
-|shipping_date|integer   |null: false|
-|price        |integer   |null: false|
-|fee          |integer   |null: false|
-|profit       |integer   |null: false|
+|column          |Type      |options          |
+|----------------|----------|-----------------|
+|user            |references|foreign_key: true|
+|name            |string    |null: false      |
+|describe        |text      |null: false      |
+|category_id     |integer   |null: false      |
+|item_status_id  |integer   |null: false      |
+|shipping_cost_id|integer   |null: false      |
+|shipping_area_id|integer   |null: false      |
+|shipping_date_id|integer   |null: false      |
+|price           |integer   |null: false      |
 
 ### Association
 
 - belongs_to :user
 - has_many   :comments
-- has_one    :card
 - has_one    :address
+- has_many :users_items
 
 
 ## commentsテーブル
 
-|column    |Type      |options    |
-|----------|----------|-----------|
-|text      |text      |null: false|
-|user      |references|           |
-|item      |references|           |
+|column    |Type      |options          |
+|----------|----------|-----------------|
+|text      |text      |null: false      |
+|user      |references|foreign_key: true|
+|item      |references|foreign_key: true|
 
 ### Association
 
@@ -58,37 +55,35 @@
 - belongs_to :item
 
 
-## cardsテーブル
+## users_itemsテーブル
 
-|column         |Type      |options    |
-|---------------|----------|-----------|
-|user           |references|           |
-|card_number    |integer   |null: false|
-|expiration_date|integer   |null: false|
-|security_code  |integer   |null: false|
+|column         |Type      |options|
+|---------------|----------|-------|
+|user_id        |references|through|
+|item_id        |references|through|
 
 ### Association
 
-- has_one  :item
-- has_one  :address
+- belongs_to :user
+- belongs_to :item
 
 
 ## addressテーブル
 
-|column         |Type      |options    |
-|---------------|----------|-----------|
-|user           |references|
-|postal_code    |integer   |null: false|
-|prefecture     |string    |null: false|
-|municipalities |string    |null: false|
-|block_number   |string    |null: false|
-|building_name  |string    |null: false|
-|phone_number   |integer   |null: false|
+|column         |Type      |options          |
+|---------------|----------|-----------------|
+|user           |references|                 |
+|postal_code    |string    |null: false      |
+|prefecture_id  |integer   |null: false      |
+|municipalities |string    |null: false      |
+|block_number   |string    |null: false      |
+|building_name  |string    |                 |
+|phone_number   |string    |null: false      |
 
 ### Association
 
 - has_one  :item
-- has_one  :card
+
 
 
 
