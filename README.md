@@ -2,22 +2,22 @@
 
 ## usersテーブル
 
-|column          |Type   |options    |
-|----------------|-------|-----------|
-|nickname        |string |null: false|
-|email           |string |null: false|
-|password        |string |null: false|
-|last_name_kanji |string |null: false|
-|first_name_kanji|string |null: false|
-|last_name_kana  |string |null: false|
-|first_name_kana |string |null: false|
-|date_of_birth   |date   |null: false|
+|column            |Type   |options    |
+|------------------|-------|-----------|
+|nickname          |string |null: false|
+|email             |string |null: false|
+|encrypted_password|string |null: false|
+|last_name_kanji   |string |null: false|
+|first_name_kanji  |string |null: false|
+|last_name_kana    |string |null: false|
+|first_name_kana   |string |null: false|
+|date_of_birth     |date   |null: false|
 
 ### Association
 
 - has_many :items
 - has_many :comments
-- has_many :users_items
+- has_many :purchase
 
 ## itemsテーブル
 
@@ -37,8 +37,7 @@
 
 - belongs_to :user
 - has_many   :comments
-- has_one    :address
-- has_many :users_items
+- has_one    :purchase
 
 
 ## commentsテーブル
@@ -55,24 +54,29 @@
 - belongs_to :item
 
 
-## users_itemsテーブル
+## purchasesテーブル
 
-|column         |Type      |options|
-|---------------|----------|-------|
-|user_id        |references|through|
-|item_id        |references|through|
+|column         |Type      |options          |
+|---------------|----------|-----------------|
+|user           |references|foreign_key: true|
+|item           |references|foreign_key: true|
+|address        |references|foreign_key: true|
+
+
 
 ### Association
 
 - belongs_to :user
 - belongs_to :item
+- has_one    :address
 
 
-## addressテーブル
+## addressesテーブル
 
 |column         |Type      |options          |
 |---------------|----------|-----------------|
 |user           |references|                 |
+|purchase       |references|foreign_key: true|
 |postal_code    |string    |null: false      |
 |prefecture_id  |integer   |null: false      |
 |municipalities |string    |null: false      |
@@ -82,7 +86,7 @@
 
 ### Association
 
-- has_one  :item
+- has_one  :purchase
 
 
 
