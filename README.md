@@ -75,7 +75,6 @@
 
 |column         |Type      |options          |
 |---------------|----------|-----------------|
-|user           |references|                 |
 |purchase       |references|foreign_key: true|
 |postal_code    |string    |null: false      |
 |prefecture_id  |integer   |null: false      |
