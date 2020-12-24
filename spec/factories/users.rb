@@ -9,6 +9,6 @@ FactoryBot.define do
     first_name_kanji {Faker::Name.first_name}
     last_name_kana {Faker::Name.last_name}
     first_name_kana {Faker::Name.first_name}
-    date_of_birth {Faker::Date.between
+    date_of_birth {Faker::Date.between}
   end
 end
