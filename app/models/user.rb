@@ -23,10 +23,3 @@ class User < ApplicationRecord
   end
 
 end
-
-
-# 以下試し用コード
-
-# with_options presence: true, format: { with: /\A[ぁ-んァ-ヶ一-龥々]+\z/ } do
-    # 処理が共通のものはまとめてこの中に記載できる
-# end
