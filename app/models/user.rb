@@ -12,14 +12,14 @@ class User < ApplicationRecord
    validates :date_of_birth
   end
   
-  with_options presence: true do
-    validates :last_name_kanji,  format: { with: /\A[ぁ-んァ-ン一-龥]/ }  
-    validates :first_name_kanji, format: { with: /\A[ぁ-んァ-ン一-龥]/ }
+  with_options presence: true, format: { with: /\A[ぁ-んァ-ン一-龥々]/ }  do
+    validates :last_name_kanji 
+    validates :first_name_kanji
   end  
   
-  with_options presence: true do
-    validates :last_name_kana, format: { with: /\A[ァ-ヶー－]+\z/ }  
-    validates :first_name_kana, format: { with: /\A[ァ-ヶー－]+\z/ }  
+  with_options presence: true, format: { with: /\A[ァ-ヶー－]+\z/ } do
+    validates :last_name_kana
+    validates :first_name_kana
   end
 
 end
