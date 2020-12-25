@@ -7,14 +7,20 @@ class User < ApplicationRecord
   PASSWORD_REGEX = /\A(?=.*?[a-z])(?=.*?[\d])[a-z\d]+\z/i
   validates_format_of :password, with: PASSWORD_REGEX
 
-  validates :nickname,          presence: true
+  with_options presence: true do
+   validates :nickname
+   validates :date_of_birth
+  end
   
-  validates :last_name_kanji,   presence: true, format: { with: /\A[ぁ-んァ-ン一-龥]/ }  
-  validates :first_name_kanji,  presence: true, format: { with: /\A[ぁ-んァ-ン一-龥]/ }  
-  validates :last_name_kana,    presence: true, format: { with: /\A[ァ-ヶー－]+\z/ }  
-  validates :first_name_kana,   presence: true, format: { with: /\A[ァ-ヶー－]+\z/ }  
+  with_options presence: true do
+    validates :last_name_kanji,  format: { with: /\A[ぁ-んァ-ン一-龥]/ }  
+    validates :first_name_kanji, format: { with: /\A[ぁ-んァ-ン一-龥]/ }
+  end  
   
-  validates :date_of_birth,     presence: true
+  with_options presence: true do
+    validates :last_name_kana, format: { with: /\A[ァ-ヶー－]+\z/ }  
+    validates :first_name_kana, format: { with: /\A[ァ-ヶー－]+\z/ }  
+  end
 
 end
 
@@ -24,4 +30,3 @@ end
 # with_options presence: true, format: { with: /\A[ぁ-んァ-ヶ一-龥々]+\z/ } do
     # 処理が共通のものはまとめてこの中に記載できる
 # end
-
