@@ -12,8 +12,7 @@ RSpec.describe Item, type: :model do
           expect(@item).to be_valid
         end
       end
-    end
-
+    
       context '商品出品がうまくいかないとき' do
         it "imageが空だと登録できない" do
           @item.image = nil
@@ -100,6 +99,7 @@ RSpec.describe Item, type: :model do
           @item.valid?
           expect(@item.errors.full_messages).to include("Price is not included in the list")
         end
-      end        
-   end
+      end 
+    end       
+  end
 end
