@@ -15,7 +15,7 @@ class Item < ApplicationRecord
   end
 
   validates :price, presence: true, 
-                    inclusion: {in: 300..9999999 }, 
+                    inclusion: {in: 300..9_999_999 }, 
                     format: { with: /\A[0-9]+\z/ }
 
   with_options extend ActiveHash::Associations::ActiveRecordExtensions do
