@@ -58,7 +58,7 @@
 
 |column         |Type      |options          |
 |---------------|----------|-----------------|
-|purchase       |references|foreign_key: true|
+|order          |references|foreign_key: true|
 |postal_code    |string    |null: false      |
 |prefecture_id  |integer   |null: false      |
 |municipalities |string    |null: false      |
