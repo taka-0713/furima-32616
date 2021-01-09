@@ -8,7 +8,7 @@ RSpec.describe OrderAddress, type: :model do
 
     describe '商品購入機能' do
       context '商品購入がうまくいくとき' do
-        it "postal_codeが存在すれば登録できる" do
+        it "tokenとpostal_codeが存在すれば登録できる" do
           expect(@order_address).to be_valid
         end
       end
