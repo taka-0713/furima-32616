@@ -1,7 +1,7 @@
 class OrdersController < ApplicationController
   before_action :authenticate_user!, only: [:index]
   before_action :sold_out
-  # before_action :identification
+  before_action :identification
 
   def index
     @item = Item.find(params[:item_id])
@@ -44,11 +44,11 @@ class OrdersController < ApplicationController
     end
   end
 
-  # def identification
-  #   @item = Item.find(params[:item_id])
-  #   if @item.user_id == current_user.id
-  #     redirect_to root_path
-  #   end
-  # end
+  def identification
+    @item = Item.find(params[:item_id])
+    if @item.user_id == current_user.id
+      redirect_to root_path
+    end
+  end
 
 end
