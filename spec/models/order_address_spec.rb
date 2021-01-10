@@ -15,7 +15,7 @@ RSpec.describe OrderAddress, type: :model do
           expect(@order_address).to be_valid
         end
         it "building_nameが空でも登録できる" do
-          @order_address.building_name = ""
+          @order_address.building_name = nil
           expect(@order_address).to be_valid
         end
       end
